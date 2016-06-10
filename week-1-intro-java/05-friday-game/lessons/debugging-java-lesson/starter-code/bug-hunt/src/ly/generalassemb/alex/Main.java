@@ -14,7 +14,7 @@ public class Main {
 
         if(answer.equals("1") || answer.equals("add")){
             add();
-        } else if(answer.equals("1") || answer.equals("subtract")){
+        } else if(answer.equals("2") || answer.equals("subtract")){
             subtract();
         } else if(answer.equals("3") || answer.equals("multiply")){
             multiply();
@@ -48,7 +48,7 @@ public class Main {
     public static void multiply(){
         int firstNum = Integer.parseInt(getInput("First number"));
         int secondNum = Integer.parseInt(getInput("Second number"));
-        int result = firstNum + secondNum;
+        int result = firstNum * secondNum;
         System.out.println("Result: "+result);
     }
 
