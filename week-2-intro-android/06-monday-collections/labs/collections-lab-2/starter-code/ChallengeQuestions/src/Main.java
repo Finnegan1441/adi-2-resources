@@ -20,6 +20,19 @@ public class Main {
      * @return An array of integers with two elements, the largest and smallest from the method parameter
      */
     public static int[] findLargestAndSmallest(int array[]){
+        int smallest = array[0];
+        int largest = array[0];
+        for (int i = 1; i <array.length ; i++) {
+            if (largest<array[i]){
+                largest=array[i];
+            }
+            if (smallest>array[i]){
+                smallest =array[i];
+            }
+
+        }
+        int [] smallestAndLargest = {smallest,largest};
+        return smallestAndLargest;
 
     }
 
@@ -39,6 +52,18 @@ public class Main {
      * @return An array of ints that doesn't contain duplicates.
      */
     public static Object[] removeDuplicatesFromArray(int[] array){
+        Arrays.sort(array);
+        int [] newArray;
+
+        ArrayList myArrayList = new ArrayList();
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != array[i+1]){
+                myArrayList.add();
+
+            }
+
+        }
 
     }
 
@@ -52,6 +77,8 @@ public class Main {
      * @return Sum of the two largest values
      */
     public static int sumOfTwoLargest(int[] array){
+        Array.sort(array);
+        return array[array.length-1] + array[array.length-2];
 
     }
 
