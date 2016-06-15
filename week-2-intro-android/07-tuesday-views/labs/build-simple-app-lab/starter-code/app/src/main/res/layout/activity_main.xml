@@ -15,9 +15,33 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@android:color/black"
+        android:layout_centerVertical="true"
         android:text="Hello!"
+        android:onClick="onTextClick"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/blueButton"
+        android:text="Blue"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/purpleButton"
+        android:text="Purple"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/blueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/grayButton"
+        android:layout_below="@+id/purpleButton"
+        android:text="GRAY"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
