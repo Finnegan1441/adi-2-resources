@@ -6,17 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import static android.app.Activity.RESULT_OK;
-
-public class SecondActivity extends AppCompatActivity {
+public class SubtractActivity extends AppCompatActivity {
     Button mButton;
     EditText firstNumber, secondNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_subtract);
 
         firstNumber = (EditText)findViewById(R.id.first_number);
         secondNumber = (EditText)findViewById(R.id.second_number);
@@ -27,8 +26,10 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int firstNum = Integer.parseInt(firstNumber.getText().toString());
                 int secondNum = Integer.parseInt(secondNumber.getText().toString());
+
                 Intent results = new Intent();
-                results.putExtra("sum", firstNum + secondNum);
+                int sum = firstNum -secondNum;
+                results.putExtra("sum", sum);
                 setResult(RESULT_OK, results);
                 finish();
             }
