@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,27 +65,29 @@ public class MainActivity extends AppCompatActivity {
 
         mAddButton.setOnClickListener(addButtonListener);
         mSubtractButton.setOnClickListener(subtractButtonListener);
-        mMultiplicationButton.setOnClickListener(divideButtonListener);
+        mMultiplicationButton.setOnClickListener(multiplyButtonListener);
         mDivisionButton.setOnClickListener(divideButtonListener);
 
     }
 
     public void addTwoNumbers(){
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
-        int number2 = Integer.parseInt(mAnswerTextView.getText().toString());
+        int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
         int answer = number1 + number2;
 
         mAnswerTextView.setText("Answer: " + answer);
+        Toast.makeText(MainActivity.this, answer + "", Toast.LENGTH_SHORT).show();
     }
 
     public void subtractTwoNumbers(){
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
-        int number2 = Integer.parseInt(mNumberOneEditText.getText().toString());
+        int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
         int answer = number1 - number2;
 
         mAnswerTextView.setText("Answer: " + answer);
+        Toast.makeText(MainActivity.this, answer + "", Toast.LENGTH_SHORT).show();
     }
 
     public void multiplyTwoNumbers(){
@@ -94,14 +97,16 @@ public class MainActivity extends AppCompatActivity {
         int answer = number1 * number2;
 
         mAnswerTextView.setText("Answer: " + answer);
+        Toast.makeText(MainActivity.this, answer + "", Toast.LENGTH_SHORT).show();
     }
 
     public void divideTwoNumbers(){
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
         int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
-        float answer = ((float) number1) + number2;
+        float answer = ((float) number1)/ number2;
 
         mAnswerTextView.setText("Answer: " + answer);
+        Toast.makeText(MainActivity.this, answer + "", Toast.LENGTH_SHORT).show();
     }
 }
