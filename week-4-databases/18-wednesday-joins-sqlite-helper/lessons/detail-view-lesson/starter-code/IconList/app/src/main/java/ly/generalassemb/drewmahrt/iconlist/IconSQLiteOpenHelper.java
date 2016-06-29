@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.Drawable;
 
 /**
  * Created by drewmahrt on 12/29/15.
@@ -65,4 +66,14 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
+    public String getDescriptionByID(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(ICON_LIST_TABLE_NAME, ICON_COLUMNS, COL_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor.moveToFirst()){
+            return cursor.getString(cursor.getColumnIndex(COL_ICON_NAME));
+        }else{
+            return "No Description Found";
+        }
+    }
+
 }
