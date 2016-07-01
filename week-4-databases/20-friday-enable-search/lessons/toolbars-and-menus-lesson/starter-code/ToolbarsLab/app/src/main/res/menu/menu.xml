@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ly.generalassemb.drewmahrt.scrollingwithtoolbar.ScrollingActivity">
+
+    <item
+        android:id="@+id/castIcon"
+        app:showAsAction="ifRoom"
+        android:title="cast"
+        android:icon="@drawable/ic_cast_white_24dp"
+        />
+
+    <item
+        android:id="@+id/plusIcon"
+        android:title="plus"
+        android:icon="@android:drawable/ic_input_add"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/threeDotsIcon"
+        app:showAsAction="ifRoom"
+        android:title="menu"
+        android:icon="@drawable/ic_more_horiz_white_24dp"
+        />
+
+
+</menu>
