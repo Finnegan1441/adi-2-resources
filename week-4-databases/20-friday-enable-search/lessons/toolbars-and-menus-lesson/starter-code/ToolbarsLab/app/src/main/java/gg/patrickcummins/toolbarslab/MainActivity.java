@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_chevron_left_white_24dp);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        
+
 
 
     }
