@@ -16,14 +16,15 @@ public class DetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_detail,container,false);
 
-
+        View v =  inflater.inflate(R.layout.fragment_detail,container,false);
+        textView = (TextView) v.findViewById(R.id.text);
+        return v;
     }
 
     // TODO: Create your helper method that takes selected planet name and sets it as text to TextView
     public void setPlanetText(String planetText){
-        textView = (TextView) getView().findViewById(R.id.text);
+
 
         textView.setText(planetText);
 
