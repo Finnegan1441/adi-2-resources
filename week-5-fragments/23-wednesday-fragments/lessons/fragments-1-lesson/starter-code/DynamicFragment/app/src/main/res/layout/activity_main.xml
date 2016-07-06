@@ -14,19 +14,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="Daily Weather"/>
+        android:text="Daily Weather" />
 
     <Button
         android:id="@+id/weekly_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="Weekly Weather"/>
-
+        android:text="Weekly Weather" />
 
 
     <!-- Create a container to hold our fragments -->
-
+    <FrameLayout
+        android:layout_below="@+id/daily_button"
+        android:id="@+id/myContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
 
 
 </RelativeLayout>
