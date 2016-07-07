@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="button_text">Socialist Button</string>
+    <string name="hello_world">Bonjour World!</string>
+</resources>
