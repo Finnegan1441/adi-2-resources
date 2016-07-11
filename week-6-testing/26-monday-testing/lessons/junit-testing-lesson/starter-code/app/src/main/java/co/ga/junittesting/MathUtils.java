@@ -27,7 +27,7 @@ public class MathUtils {
 
         for (double number : numbers){
             if (firstNumber){
-                solution *= number;
+                solution = number;
                 firstNumber = false;
             } else {
                 solution *= number;
@@ -42,7 +42,7 @@ public class MathUtils {
     }
 
     public static double square(double number){
-        return number + number;
+        return number * number;
     }
 
     public static int add(int... numbers){
@@ -57,7 +57,7 @@ public class MathUtils {
     }
 
     public static double add(double... numbers){
-        int sum = 0;
+        double sum = 0;
 
         for (int i = 0; i < numbers.length; i++){
             double number = numbers[i];
@@ -78,6 +78,6 @@ public class MathUtils {
         double aSquared = square(a);
         double bSquared = square(b);
 
-        return add(aSquared, aSquared);
+        return add(aSquared, bSquared);
     }
 }
