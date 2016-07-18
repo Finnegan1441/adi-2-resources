@@ -1,0 +1,78 @@
+{
+	"family_array": [
+		{
+			"father": {
+				"name": "John",
+				"age": 51,
+				"quality": "Runner",
+				"appearance": {
+					"eyes": "brown",
+					"hair": "none"
+				}
+			},
+			"mother": {
+				"name": "Clarice",
+				"age": 51,
+				"quality": "Gardner",
+				"appearance": {
+					"eyes": "green",
+					"hair": "short"
+				}
+			},
+			"daughter": {
+				"name": "Ashleen",
+				"age": 19,
+				"quality": "artist",
+				"appearance": {
+					"eyes": "green",
+					"hair": "long"
+				}
+			},
+			"son": {
+				"name": "Patrick",
+				"age": 21,
+				"quality": "Programmer",
+				"appearance": {
+					"eyes": "green",
+					"hair": "short"
+				}
+			}
+		}
+	]
+}
+{
+	"family_nested_objects": {
+		"John": {
+			"age": 51,
+			"quality": "Runner",
+			"appearance": {
+				"eyes": "brown",
+				"hair": "none"
+			}
+		},
+		"Clarice": {
+			"age": 51,
+			"quality": "Gardner",
+			"appearance": {
+				"eyes": "green",
+				"hair": "short"
+			}
+		},
+		"Ashleen": {
+			"age": 19,
+			"quality": "artist",
+			"appearance": {
+				"eyes": "green",
+				"hair": "long"
+			}
+		},
+		"Patrick": {
+			"age": 21,
+			"quality": "Programmer",
+			"appearance": {
+				"eyes": "green",
+				"hair": "short"
+			}
+		}
+	}
+}
