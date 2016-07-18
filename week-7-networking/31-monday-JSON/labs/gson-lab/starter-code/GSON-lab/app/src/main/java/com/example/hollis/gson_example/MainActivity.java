@@ -2,6 +2,14 @@ package com.example.hollis.gson_example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.example.hollis.gson_example.SpotifyObjectClasses.SpotifyObject;
+import com.example.hollis.gson_example.WeatherObjectClasses.WeatherObject;
+import com.google.gson.Gson;
+
+import static android.R.attr.name;
+import static android.view.View.X;
 
 public class MainActivity extends AppCompatActivity {
     public static final String SPOTIFY_JSON = "{\n" +
@@ -107,13 +115,24 @@ public class MainActivity extends AppCompatActivity {
 //TODO: Create a SpotifyObject that mirrors the string
     //TODO: Create a WeatherObject that mirrors the weather JSON String
     public  MarvelResult marvelResult;
+    public static final String MARVEL_JSON="{\"teams\":[{\"headquarters\":\"Xavier\u0027s School For Gifted Children\",\"members\":[{\"Age\":32,\"name\":\"Cyclops\",\"power\":\"laser vision\"},{\"Age\":120,\"name\":\"Wolverine\",\"power\":\"regeneration\"}],\"name\":\"X-men\"},{\"headquarters\":\"Avengers Mansion\",\"members\":[{\"Age\":1243,\"name\":\"Thor\",\"power\":\"is a Norse God\"},{\"Age\":120,\"name\":\"Wolverine\",\"power\":\"regeneration\"}],\"name\":\"Avengers\"}]}";
     //TODO: Create a String that mirrors the marvelResult object
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createMarvelResult();
+
+        Gson gson = new Gson();
+        WeatherObject weatherObject = gson.fromJson(WEATHER_JSON, WeatherObject.class);
+        SpotifyObject spotifyObject = gson.fromJson(SPOTIFY_JSON, SpotifyObject.class);
+
+        Log.d("LOGGING WEATHER OBJECT", gson.toJson(weatherObject));
+        Log.d("LOGGING Spotify OBJECT", gson.toJson(spotifyObject));
+        Log.d("LOGGING Marvel OBJECT", gson.toJson(marvelResult));
+
+
+
 
 
 
