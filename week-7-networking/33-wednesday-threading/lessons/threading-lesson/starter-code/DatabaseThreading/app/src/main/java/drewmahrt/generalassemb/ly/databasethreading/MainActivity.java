@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                DatabaseAsyncTask databaseAsyncTask = new DatabaseAsyncTask();
-                databaseAsyncTask.execute();
+
+                drewmahrt.generalassemb.ly.databasethreading.AsyncTask asyncTask = new drewmahrt.generalassemb.ly.databasethreading.AsyncTask(mProgressBar, mTextView, MainActivity.this);
+                asyncTask.execute();
 
             }
         });
