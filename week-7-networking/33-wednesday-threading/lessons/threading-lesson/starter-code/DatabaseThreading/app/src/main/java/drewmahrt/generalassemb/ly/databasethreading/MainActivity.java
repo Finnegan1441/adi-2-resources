@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
     TextView mTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                mTextView.setText("Adding items to database...");
-                mProgressBar.setVisibility(View.VISIBLE);
-                addDatabaseItems();
-                int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
-                mProgressBar.setVisibility(View.INVISIBLE);
-                mTextView.setText("All items added to database! Current item count: "+count);
+                DatabaseAsyncTask databaseAsyncTask = new DatabaseAsyncTask();
+                databaseAsyncTask.execute();
+
             }
         });
     }
@@ -40,4 +39,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private class DatabaseAsyncTask extends AsyncTask<Void, Void, Integer>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mTextView.setText("Adding items to database...");
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            addDatabaseItems();
+            int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
+            return count;
+        }
+
+        @Override
+        protected void onPostExecute(Integer count) {
+            super.onPostExecute(count);
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mTextView.setText("All items added to database! Current item count: "+count);
+        }
+    }
 }
