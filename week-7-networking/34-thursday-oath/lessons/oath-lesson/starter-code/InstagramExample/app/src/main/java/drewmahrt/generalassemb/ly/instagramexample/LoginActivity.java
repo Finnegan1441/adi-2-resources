@@ -6,12 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import drewmahrt.generalassemb.ly.instagramexample.models.AuthenticationResponse;
 import drewmahrt.generalassemb.ly.instagramexample.models.InstaGramUser;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.os.FileObserver.ACCESS;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -45,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        mWebView.loadUrl( /* Put URL here */ );
+        mWebView.loadUrl("https://instagram.com/oauth/authorize/?client_id="+ InstagramAppData.CLIENT_ID +"&redirect_uri="+ InstagramAppData.CALLBACK_URL  +"&response_type=code&scope=public_content");
     }
 
     private void setupInstaGramApiService(){
@@ -62,13 +67,27 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(LoginActivity.class.getName(),"Trying to get access token");
 
         // Pass in the form data for this post call
-        Call<AuthenticationResponse> call = instaGramService.postAccessCode(
-                /* Include CLIENT_SECRET */,
-                /* Include CLIENT_ID */,
-                /* Include AUTH_CODE_KEY */,
-                /* Include CALLBACK_URL */,
-                /* Include code */);
+        Call<AuthenticationResponse> call = instaGramService.postAccessCode(InstagramAppData.CLIENT_SECRET,InstagramAppData.CLIENT_ID,InstagramAppData.AUTH_CODE_KEY,InstagramAppData.CALLBACK_URL, code);
 
+        call.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                AuthenticationResponse authenticationResponse =response.body();
+                InstaGramUser instaGramUser = authenticationResponse.getUser();
+
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("USER_ID", instaGramUser.getId());
+                intent.putExtra("ACCESS_TOKEN", authenticationResponse.getToken());
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Invalid", Toast.LENGTH_SHORT);
+
+            }
+        });
         // TODO: run the call on a worker thread asynchronously
 
         // TODO: On sucessful response, get AuthenticationResponse object from the response object
