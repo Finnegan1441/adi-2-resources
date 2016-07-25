@@ -18,6 +18,12 @@ public class CustomIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.i("CUSTOM INTENT SERVICE", "Service Created");
 
+
+                Log.i("RUNNABLE", "Runnable Started");
+                Log.i("RUNNABLE", "Runnable finished");
+
+
+
     }
 
     @Override

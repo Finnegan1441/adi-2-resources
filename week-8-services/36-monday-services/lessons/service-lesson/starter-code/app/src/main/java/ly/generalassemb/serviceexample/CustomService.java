@@ -27,6 +27,15 @@ public class CustomService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("CUSTOM SERVICE", "Service Started");
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.i("RUNNABLE", "Runnable Started");
+                Log.i("RUNNABLE", "Runnable finished");
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.run();
         return super.onStartCommand(intent, flags, startId);
 
     }
