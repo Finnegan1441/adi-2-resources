@@ -8,12 +8,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity // TODO: Step 8e) Implement the interface you created {
+public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.OnClickReturnNameAndPosition {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter rvAdapter;
     private RecyclerView.LayoutManager rvLayoutManager;
 
     private ArrayList<String> dataList = new ArrayList<>();
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(MainActivity.this, "Clicked on " + dataList.get(position) + " at position " + position, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity // TODO: Step 8e) Implement 
         recyclerView.setLayoutManager(rvLayoutManager);
 
         // TODO: Step 8e) Create adapter, pass in data and the interface you implemented
-        rvAdapter =
+        rvAdapter = new CustomRecyclerViewAdapter(dataList, this);
 
         recyclerView.setAdapter(rvAdapter);
 

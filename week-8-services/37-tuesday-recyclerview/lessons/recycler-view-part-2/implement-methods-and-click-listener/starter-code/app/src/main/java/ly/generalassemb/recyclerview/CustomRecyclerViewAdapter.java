@@ -1,10 +1,15 @@
 package ly.generalassemb.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static android.R.attr.onClick;
 
 /**
  * Custom RecyclerView Adapter for rv_list_item.xml list item
@@ -16,13 +21,18 @@ import android.widget.TextView;
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecyclerViewAdapter.SampleViewHolder> {
     // TODO: Step 6a) Create Data list variable
 
+    ArrayList<String> data;
 
 
     // TODO: Step 8b) Declare a variable of the interface you defined in step 8a
+    private  static OnClickReturnNameAndPosition onClickReturnNameAndPosition;
 
 
 
     // TODO: Step 8a) Define your Interface to pass in position of clicked item!
+    public static interface OnClickReturnNameAndPosition{
+        void onItemClick(int position);
+    }
 
 
 
@@ -50,6 +60,14 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
             // TODO: Step 8d) Set click listener on itemView AND pass position through interface
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    onClickReturnNameAndPosition.onItemClick(getLayoutPosition());
+                }
+            });
+
 
 
         }
@@ -57,6 +75,15 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
 
     // TODO: Step 6b) Create Constructor for CustomRecyclerViewAdapter
+
+    public CustomRecyclerViewAdapter(ArrayList<String> data, OnClickReturnNameAndPosition clickListener) {
+        this.onClickReturnNameAndPosition = clickListener;
+        if (data!=null) {
+            this.data = data;
+        }else {
+            this.data = new ArrayList<String>();
+        }
+    }
 
 
     // TODO: 8c) Update constructor to take in implementation of your interface
@@ -68,13 +95,21 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
         // TODO: Step 7a) Fill out this method
 
-        return null;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        SampleViewHolder sampleViewHolder = new SampleViewHolder(inflater.inflate(R.layout.rv_list_item, parent, false));
+
+        return sampleViewHolder;
     }
 
     @Override
     public void onBindViewHolder(SampleViewHolder holder, int position) {
 
         // TODO: Step 7b) Fill out this method
+        String currentItem = data.get(position);
+
+        holder.textView.setText(currentItem);
+        holder.imageView.setImageResource(R.mipmap.ic_launcher);
 
 
     }
@@ -84,6 +119,6 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
         // TODO: Step 7c) Fill out this method
 
-        return 0;
+        return data.size();
     }
 }
