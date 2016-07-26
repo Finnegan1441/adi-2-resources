@@ -38,31 +38,37 @@ public class SongBoundService extends Service {
         if (isPrepared){
             mediaPlayer.start();
         }else {
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mediaPlayer) {
-                    mediaPlayer.start();
-                    isPrepared =true;
-                }
-            });
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopSelf();
-                }
-            });
+            prepareMedia();
         }
-
-
-
     }
+
+    private void prepareMedia() {
+        mediaPlayer.prepareAsync();
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.start();
+                isPrepared =true;
+            }
+        });
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                stopSelf();
+            }
+        });
+    }
+
     public void pauseMedia(){
-        mediaPlayer.pause();
+        if (isPrepared) {
+            mediaPlayer.pause();
+        }
     }
     public void stopMedia(){
-        mediaPlayer.stop();
-        isPrepared = false;
+        if (isPrepared) {
+            mediaPlayer.stop();
+            isPrepared = false;
+        }
     }
 
 

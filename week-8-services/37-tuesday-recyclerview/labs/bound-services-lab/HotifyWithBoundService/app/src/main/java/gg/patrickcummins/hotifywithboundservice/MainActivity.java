@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         if(isBound) {
             unbindService(myConnection);
+            isBound=false;
         }
 
     }
