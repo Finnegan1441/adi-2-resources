@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         Boolean isValid = true;
-                        EditText symbolText = (EditText)((AlertDialog)dialog).findViewById(R.id.stock_symbol_edittext);
-                        EditText quantityText = (EditText)((AlertDialog)dialog).findViewById(R.id.quantity_edittext);
+                        EditText symbolText = (EditText)((AlertDialog) dialog).findViewById(R.id.stock_symbol_edittext);
+                        EditText quantityText = (EditText)((AlertDialog) dialog).findViewById(R.id.quantity_edittext);
                         if(symbolText.getText().toString().length() == 0 || quantityText.getText().toString().length() == 0){
                             Toast.makeText(MainActivity.this,"You must complete all fields",Toast.LENGTH_LONG).show();
                             isValid = false;
