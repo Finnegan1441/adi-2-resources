@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "614837672644",
+    "firebase_url": "https://fir-classwork.firebaseio.com",
+    "project_id": "fir-classwork",
+    "storage_bucket": "fir-classwork.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614837672644:android:aa4293fe316045f5",
+        "android_client_info": {
+          "package_name": "gg.patrickcummins.firebasepractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614837672644-bpsme9q835a4tcjctssouhqaqp8sjkab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxStB3hmgGFiP-Srj83qxMybrmXCBg7o4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
