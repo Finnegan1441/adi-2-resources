@@ -32,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setOnClickListeners(){
         startJobButton.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                //TODO: CREATE YOUR JOB INFO OBJECT
+
+                     JobInfo jobBuilder = new JobInfo.Builder(1, new ComponentName(getPackageName(), NotificationJobService.class.getName())).setPeriodic(10000).build();
+
 
 
                 //TODO: MAKE SURE THE MANIFEFST IS CORRECT
@@ -45,15 +49,21 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //TODO: SCHEDULE YOUR JOB
+                JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+
+                jobScheduler.schedule(jobBuilder);
 
 
             }
         });
 
         stopJobButton.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 //TODO: GET AN INSTANCE OF YOUR JOBSCHEDULER
+                JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+                jobScheduler.cancel(1);
                 //TODO: CANCEL YOUR JOB
             }
         });
