@@ -1,5 +1,3 @@
-package InsertionSort;
-
 public class InsertionSort {
 
 	public static void main(String[] args) {
@@ -14,7 +12,16 @@ public class InsertionSort {
 
 	private static int[] doInsertionSort(int[] input) {
 		//Your code here
-		
-        return input;
+        int holder;
+		for (int i = 1; i < input.length ; i++) {
+			for (int j = i; j > 0 ; j--) {
+				if (input[j]<input[j-1]){
+                    holder = input[j];
+                    input[j] = input[j-1];
+                    input[j-1] = holder;
+				}
+			}
+		}
+		return input;
 	}
 }
