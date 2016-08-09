@@ -6,10 +6,9 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        int seekValue = 8;
+        int seekValue = 9;
         // Create a new BinaryTree object that we defined in BinaryTree class
         BinaryTree tree = new BinaryTree();
-
         // Run BFS on the tree. Node the tree has a helper method to run the BFS on itself!
         Node nodeWithValue = tree.findValueUsingBfs(seekValue);
         if (nodeWithValue != null){
