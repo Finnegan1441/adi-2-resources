@@ -13,14 +13,17 @@ public class InsertionSort {
 	private static int[] doInsertionSort(int[] input) {
 		//Your code here
         int holder;
-		for (int i = 1; i < input.length ; i++) {
-			for (int j = i; j > 0 ; j--) {
+        int counter = 0;
+		for (int i = input.length-1; i > 0 ; i--) {
+
+			for (int j = i; j > 0 + counter ; j--) {
 				if (input[j]<input[j-1]){
                     holder = input[j];
                     input[j] = input[j-1];
                     input[j-1] = holder;
 				}
 			}
+            counter++;
 		}
 		return input;
 	}
